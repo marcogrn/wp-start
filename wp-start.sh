@@ -5,22 +5,24 @@
 
 # the domain name is used for naming the project folder 
 # es. domainname.com
-echo write domain name:
+echo 01. write domain name:
+echo es domainname.com
 read DOMAIN_NAME
 
 # define the path where inizialize the project
 # es. /var/www/
-echo whrere is the www path?
+echo 02. whrere is the www path?
+echo the defaulf value is /var/www/
 read WWW_PATH
 
 # define the owner user of the project
 # es. www-data
-echo who is the www user?
+echo 03. who is the www user?
 read WWW_USER
 
 # define the www group
 # es. www-data
-echo what is the www group?
+echo 03. what is the www group?
 read WWW_GROUP
 
 # create project directory
@@ -39,7 +41,7 @@ rm -rf wordpress latest.tar.gz
 mv wp-config-sample.php wp-config.php
 
 # verify user, group and permission
-chown -R $WWW_USER:$WWW_GROUP .
+chown -R $WWW_USER:$WWW_GROUP $WWW_PATH/$DOMAIN_NAME
 find . -type d -exec chmod 0755 {} \;
 find . -type f -exec chmod 0644 {} \;
 
